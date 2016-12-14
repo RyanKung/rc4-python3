@@ -75,7 +75,7 @@ def main():
     if argv[1] == 'encrypt':
         return encrypt(argv[2], argv[3])
     if argv[1] == 'decrypt':
-        return encrypt(argv[2], argv[3])
+        return decrypt(argv[2], argv[3])
     else:
         return '''Options:
         pyrc4 encrypt data key
