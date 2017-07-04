@@ -73,13 +73,14 @@ def main():
     import sys
     argv = sys.argv
     if argv[1] == 'encrypt':
-        return encrypt(argv[2], argv[3])
+        return encrypt(argv[2], argv[3]).decode()
     if argv[1] == 'decrypt':
         return decrypt(argv[2], argv[3])
     else:
         return '''Options:
         pyrc4 encrypt data key
         pyrc4 decrypt data key'''
+
 
 if __name__ == '__main__':
     import doctest
