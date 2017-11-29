@@ -1,0 +1,2 @@
+pypng==0.0.18
+pyqrcode==1.2.1

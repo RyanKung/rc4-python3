@@ -8,6 +8,15 @@ from setuptools import setup, find_packages
 here = os.path.abspath(os.path.dirname(__file__))
 
 
+install_requires = [
+    line
+    for line in open(
+        os.path.join(here, "requirements.txt"),
+        "r"
+    )
+]
+
+
 def read(*parts):
     # intentionally *not* adding an encoding option to open, See:
     #   https://github.com/pypa/virtualenv/issues/201#issuecomment-3145690
@@ -22,8 +31,10 @@ def find_version(*file_paths):
         return version_match.group(1)
     raise RuntimeError("Unable to find version string.")
 
+
 setup(
     name='rc4-python3',
+    install_requires=install_requires,
     version=find_version('rc4', '__init__.py'),
     author='Ryan Kung',
     url='https://github.com/RyanKung/rc4-python3',

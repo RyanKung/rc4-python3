@@ -1,3 +1,4 @@
+import pyqrcode
 import random
 import base64
 import json
@@ -5,6 +6,11 @@ from typing import Callable
 from hashlib import sha1
 
 __all__ = ['encrypt', 'decrypt', 'encrypt_json', 'decrypt_json']
+
+
+def from_qrcode(filepath: str) -> str:
+    qr = qrtools.QR()
+    qr.decode(filepath)
 
 
 def crypt(data: str, key: bytes) -> str:
@@ -52,6 +58,10 @@ def decrypt_json(data: str, key: str) -> dict:
     return json.loads(decrypt(data, key))
 
 
+def encode_qr(data: str, filepath='encrypted.png'):
+    return pyqrcode.create(data).png(filepath)
+
+
 def main():
     '''
     >>> for i in range(10):
@@ -71,15 +81,24 @@ def main():
     True
     '''
     import sys
+
+    __doc__ = '''Options:
+        pyrc4 encrypt2qr data key filepath
+        pyrc4 encrypt data key
+        pyrc4 decrypt data key'''
+
     argv = sys.argv
+
+    if len(argv) == 1:
+        return __doc__
     if argv[1] == 'encrypt':
         return encrypt(argv[2], argv[3]).decode()
     if argv[1] == 'decrypt':
         return decrypt(argv[2], argv[3])
+    if argv[1] == 'encrypt2qr':
+        return encode_qr(encrypt(argv[2], argv[3]), argv[4])
     else:
-        return '''Options:
-        pyrc4 encrypt data key
-        pyrc4 decrypt data key'''
+        return __doc__
 
 
 if __name__ == '__main__':
