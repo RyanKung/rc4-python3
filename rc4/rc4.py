@@ -8,11 +8,6 @@ from hashlib import sha1
 __all__ = ['encrypt', 'decrypt', 'encrypt_json', 'decrypt_json']
 
 
-def from_qrcode(filepath: str) -> str:
-    qr = qrtools.QR()
-    qr.decode(filepath)
-
-
 def crypt(data: str, key: bytes) -> str:
     """RC4 algorithm"""
     x = 0
