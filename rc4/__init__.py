@@ -24,7 +24,7 @@
 #       MA 02110-1301, USA.
 #
 
-__version__ = '1.1.4'
+__version__ = '1.1.5'
 __author__ = ('Ryan Kung', 'ryankung(at)ieee.org')
 
 from .rc4 import *
