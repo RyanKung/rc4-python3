@@ -7,3 +7,6 @@ upload:
 
 install:
 	python3 setup.py install
+
+osx_pack:
+	pyinstaller --onefile --name pyrc4 rc4/__init__.py
