@@ -27,4 +27,4 @@
 __version__ = '1.1.5'
 __author__ = ('Ryan Kung', 'ryankung(at)ieee.org')
 
-from .rc4 import *
+from rc4.rc4 import *
